@@ -8,7 +8,7 @@ body {
     text-align: center;
 }
 
-div#slide {
+.slide {
     width:380px;
     padding:0 40px;
     margin:5rem auto 1rem;
@@ -19,7 +19,7 @@ div#slide {
     background:white;
 }
 
-#slide div:not([class='nav-buttons']) {
+.slide > div:not([class='nav-buttons']) {
     border:1px solid black;
     height:200px;
     width: 300px;
@@ -31,11 +31,11 @@ div#slide {
     transition: margin-left 1s;
 }
 
-input[type="radio"] {
+.slide > input[type="radio"] {
     display:none;
 }
 
-input+label, input+label+label {
+.slide > input+label, .slide > input+label+label {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -51,45 +51,45 @@ input+label, input+label+label {
     background:white;    
 }
 
-input+label:hover, input+label+label:hover {
+.slide > input+label:hover, .slide > input+label+label:hover {
     color:#9e9;
 }
 
-input+label {
+.slide > input+label {
     left:0;
 }
 
-input+label+label {
+.slide > input+label+label {
     right:0;
 }
 
-#slide input[type="radio"]:checked + label,
-#slide input[type="radio"]:checked + label+label {
-    z-index:3;
+.slide > input[type="radio"]:checked + label,
+.slide > input[type="radio"]:checked + label+label {
+    z-index:2;
 }
 
-#slide input[type="radio"]:checked ~ div {
+.slide > input[type="radio"]:checked ~ div {
     margin-left:0;
 }
 
-#slide input[type='radio']:nth-of-type(1):checked ~ .nav-buttons > label:nth-of-type(1),
+.slide > input[type='radio']:nth-of-type(1):checked ~ .nav-buttons > label:nth-of-type(1),
 
-#slide input[type='radio']:nth-of-type(2):checked ~ .nav-buttons > label:nth-of-type(2),
+.slide > input[type='radio']:nth-of-type(2):checked ~ .nav-buttons > label:nth-of-type(2),
 
-#slide input[type='radio']:nth-of-type(3):checked ~ .nav-buttons > label:nth-of-type(3),
+.slide > input[type='radio']:nth-of-type(3):checked ~ .nav-buttons > label:nth-of-type(3),
 
-#slide input[type='radio']:nth-of-type(4):checked ~ .nav-buttons > label:nth-of-type(4),
+.slide > input[type='radio']:nth-of-type(4):checked ~ .nav-buttons > label:nth-of-type(4),
 
-#slide input[type='radio']:nth-of-type(5):checked ~ .nav-buttons > label:nth-of-type(5) {
+.slide > input[type='radio']:nth-of-type(5):checked ~ .nav-buttons > label:nth-of-type(5) {
     background:green;
 } 
 
 
-.nav-buttons {
+.slide > .nav-buttons {
     display: block;
 }
 
-.nav-buttons label {
+.slide > .nav-buttons label {
     margin:0.25rem 0.1rem;
     display:inline-block;
     background: #333;
@@ -99,6 +99,6 @@ input+label+label {
     border:1px solid black;
 }
 
-.nav-buttons label:hover {
+.slide > .nav-buttons label:hover {
     background:lime;
 }
