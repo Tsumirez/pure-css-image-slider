@@ -5,32 +5,39 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fuggles&family=Lora:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
     <form>
-        <div class="container">
-            <div id="slide">
-                <input type="radio" id="slide1" name="slide" checked value="1">
-                <div>Slide 1</div>
-                <input type="radio" id="slide2" name="slide" value="2">
-                <div>Slide 2</div>
-                <input type="radio" id="slide3" name="slide" value="3">
-                <div>Slide 3</div>
-                <input type="radio" id="slide4" name="slide" value="4">
-                <div>Slide 4</div>
-                <input type="radio" id="slide5" name="slide" value="4">
-                <div>Slide 5</div>
+        <div id="slide">
+            <input type="radio" id="slide1" name="slide" checked><label for="slide5">&lt;</label><label
+                for="slide2">&gt;</label>
+            <div>Slide 1</div>
+            <input type="radio" id="slide2" name="slide"><label for="slide1">&lt;</label><label
+                for="slide3">&gt;</label>
+            <div>Slide 2</div>
+            <input type="radio" id="slide3" name="slide"><label for="slide2">&lt;</label><label
+                for="slide4">&gt;</label>
+            <div>Slide 3</div>
+            <input type="radio" id="slide4" name="slide"><label for="slide3">&lt;</label><label
+                for="slide5">&gt;</label>
+            <div>Slide 4</div>
+            <input type="radio" id="slide5" name="slide"><label for="slide4">&lt;</label><label
+                for="slide1">&gt;</label>
+            <div>Slide 5</div>
 
-                <div class="nav-buttons">
-                    <label for="slide1"></label>
-                    <label for="slide2"></label>
-                    <label for="slide3"></label>
-                    <label for="slide4"></label>
-                    <label for="slide5"></label>
-                </div>
+            <div class="nav-buttons">
+                <label for="slide1"></label>
+                <label for="slide2"></label>
+                <label for="slide3"></label>
+                <label for="slide4"></label>
+                <label for="slide5"></label>
             </div>
         </div>
     </form>

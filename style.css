@@ -7,27 +7,16 @@
 body {
     text-align: center;
 }
-/* 
-div.container {
-    width:400px;
-    overflow: hidden;
-    margin: 0 auto;
-    border:1px solid red;
-} */
-
-div.container::before, div.container::after {
-    content:'';
-    width:50px;
-    height:100%;
-    background:white;
-}
 
 div#slide {
-    width:300px;
+    width:380px;
+    padding:0 40px;
     margin:5rem auto 1rem;
     white-space: nowrap;
     font-size:0;
     overflow: hidden;
+    position: relative;
+    background:white;
 }
 
 #slide div:not([class='nav-buttons']) {
@@ -43,10 +32,40 @@ div#slide {
 }
 
 input[type="radio"] {
-    font-size:0;
-    height:0;
-    width:0;
     display:none;
+}
+
+input+label, input+label+label {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    top:0;
+    width:40px;
+    height:200px;
+    position: absolute;
+
+    cursor:pointer;
+    color:#777;
+    font:700 8rem Fuggles, serif;
+    background:white;    
+}
+
+input+label:hover, input+label+label:hover {
+    color:#9e9;
+}
+
+input+label {
+    left:0;
+}
+
+input+label+label {
+    right:0;
+}
+
+#slide input[type="radio"]:checked + label,
+#slide input[type="radio"]:checked + label+label {
+    z-index:3;
 }
 
 #slide input[type="radio"]:checked ~ div {
