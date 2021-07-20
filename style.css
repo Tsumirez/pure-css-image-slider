@@ -7,23 +7,37 @@
 body {
     text-align: center;
 }
+/* 
+div.container {
+    width:400px;
+    overflow: hidden;
+    margin: 0 auto;
+    border:1px solid red;
+} */
+
+div.container::before, div.container::after {
+    content:'';
+    width:50px;
+    height:100%;
+    background:white;
+}
 
 div#slide {
     width:300px;
-    overflow: hidden;
     margin:5rem auto 1rem;
     white-space: nowrap;
     font-size:0;
+    overflow: hidden;
 }
 
-#slide div {
+#slide div:not([class='nav-buttons']) {
     border:1px solid black;
     height:200px;
     width: 300px;
     background:green;
     display:inline-block;
     line-height:200px;
-    font-size:1rem;
+    font-size:3rem;
     margin-left:-100%;
     transition: margin-left 1s;
 }
@@ -39,13 +53,27 @@ input[type="radio"] {
     margin-left:0;
 }
 
+#slide input[type='radio']:nth-of-type(1):checked ~ .nav-buttons > label:nth-of-type(1),
+
+#slide input[type='radio']:nth-of-type(2):checked ~ .nav-buttons > label:nth-of-type(2),
+
+#slide input[type='radio']:nth-of-type(3):checked ~ .nav-buttons > label:nth-of-type(3),
+
+#slide input[type='radio']:nth-of-type(4):checked ~ .nav-buttons > label:nth-of-type(4),
+
+#slide input[type='radio']:nth-of-type(5):checked ~ .nav-buttons > label:nth-of-type(5) {
+    background:green;
+} 
+
+
 .nav-buttons {
-    display: inline-block;
+    display: block;
 }
 
 .nav-buttons label {
+    margin:0.25rem 0.1rem;
     display:inline-block;
-    background: green;
+    background: #333;
     width:1rem;
     height: 1rem;
     border-radius: 50%;
@@ -54,3 +82,4 @@ input[type="radio"] {
 
 .nav-buttons label:hover {
     background:lime;
+}
