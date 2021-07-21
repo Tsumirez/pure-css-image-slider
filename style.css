@@ -1,104 +1,137 @@
+/* Global reset styles */
 * {
     margin:0;
     padding:0;
     box-sizing: border-box;
 }
 
-body {
-    text-align: center;
-}
+/* the container for slides along with component-wide css variables */
 
-.slide {
-    width:380px;
-    padding:0 40px;
+.slide-viewer {
+    --viewer-width:46rem;
+    --viewer-padding:5rem;
+    --slide-height:23rem;
+    --slide-width: calc(var(--viewer-width) - 2 * var(--viewer-padding));
+
+    --nav-buttons-color-inactive: #333;
+    --nav-buttons-color-current: green;
+    --nav-buttons-color-hover: #9d6;
+
+    --nav-arrow-color-hover: #9e9;
+    --nav-arrow-color: #777;
+
+    --default-border: 1px solid black;
+
+    width:var(--viewer-width);
+    padding:0 var(--viewer-padding);
     margin:5rem auto 1rem;
     white-space: nowrap;
     font-size:0;
     overflow: hidden;
     position: relative;
-    background:white;
+    text-align: center;
 }
 
-.slide > div:not([class='nav-buttons']) {
-    border:1px solid black;
-    height:200px;
-    width: 300px;
-    background:green;
-    display:inline-block;
-    line-height:200px;
-    font-size:3rem;
+/* styles for stub "slides". Normally there will be panels with content insted */
+
+.slide-viewer > div:not([class='nav-buttons']) {
+    height:var(--slide-height);
+    width: var(--slide-width);
     margin-left:-100%;
-    transition: margin-left 1s;
+    display:inline-block;
+    background:green;
+    border:var(--default-border);
+    border-left-width: 0;
+    line-height:var(--slide-height);
+    font-size:3rem;
+    transition: margin-left 0.5s cubic-bezier(0.585, 0, 0.430, 1.640);
 }
 
-.slide > input[type="radio"] {
+.slide-viewer > div:not([class='nav-buttons']):first-of-type {
+    border-left-width: 1px;
+}
+
+/* hiding the radio buttons (they're used for sliding mechanism, not any form functionality) */
+
+.slide-viewer > input[type="radio"] {
     display:none;
 }
 
-.slide > input+label, .slide > input+label+label {
+/* styles for back/forward arrows. 
+   background-color is crucial. It must be same as the surrounding area, as it masks 
+   the area under arrows where parts of off-screen slide are visible.
+*/
+
+.slide-viewer > input+label, .slide-viewer > input+label+label {
     display:flex;
     justify-content: center;
     align-items: center;
 
     top:0;
-    width:40px;
-    height:200px;
+    width:var(--viewer-padding);
+    height:var(--slide-height);
     position: absolute;
 
     cursor:pointer;
-    color:#777;
+    color:var(--nav-arrow-color);
     font:700 8rem Fuggles, serif;
     background:white;    
 }
 
-.slide > input+label:hover, .slide > input+label+label:hover {
-    color:#9e9;
+.slide-viewer > input+label:hover, .slide-viewer > input+label+label:hover {
+    color:var(--nav-arrow-color-hover);
 }
 
-.slide > input+label {
+.slide-viewer > input+label {
     left:0;
 }
 
-.slide > input+label+label {
+.slide-viewer > input+label+label {
     right:0;
 }
 
-.slide > input[type="radio"]:checked + label,
-.slide > input[type="radio"]:checked + label+label {
-    z-index:2;
+/* this makes navigation arrrows related to selected panel go over others and become active ones */
+
+.slide-viewer > input[type="radio"]:checked + label,
+.slide-viewer > input[type="radio"]:checked + label+label {
+    z-index:3;
 }
 
-.slide > input[type="radio"]:checked ~ div {
+/* this one line does the core sliding feature */
+
+.slide-viewer > input[type="radio"]:checked ~ div {
     margin-left:0;
 }
 
-.slide > input[type='radio']:nth-of-type(1):checked ~ .nav-buttons > label:nth-of-type(1),
+/* this highlights the navigation button under viewer that is corresponding to currently viewed slide */
+.slide-viewer > input[type='radio']:nth-of-type(1):checked ~ .nav-buttons > label:nth-of-type(1),
 
-.slide > input[type='radio']:nth-of-type(2):checked ~ .nav-buttons > label:nth-of-type(2),
+.slide-viewer input[type='radio']:nth-of-type(2):checked ~ .nav-buttons > label:nth-of-type(2),
 
-.slide > input[type='radio']:nth-of-type(3):checked ~ .nav-buttons > label:nth-of-type(3),
+.slide-viewer input[type='radio']:nth-of-type(3):checked ~ .nav-buttons > label:nth-of-type(3),
 
-.slide > input[type='radio']:nth-of-type(4):checked ~ .nav-buttons > label:nth-of-type(4),
+.slide-viewer input[type='radio']:nth-of-type(4):checked ~ .nav-buttons > label:nth-of-type(4),
 
-.slide > input[type='radio']:nth-of-type(5):checked ~ .nav-buttons > label:nth-of-type(5) {
-    background:green;
+.slide-viewer input[type='radio']:nth-of-type(5):checked ~ .nav-buttons > label:nth-of-type(5) {
+    background: Var(--nav-buttons-color-current);
 } 
 
 
-.slide > .nav-buttons {
+.slide-viewer > .nav-buttons {
     display: block;
 }
 
-.slide > .nav-buttons label {
+.slide-viewer > .nav-buttons label {
     margin:0.25rem 0.1rem;
     display:inline-block;
-    background: #333;
+    background: var(--nav-buttons-color-inactive);
     width:1rem;
     height: 1rem;
     border-radius: 50%;
-    border:1px solid black;
+    border:var(--default-border);
 }
 
-.slide > .nav-buttons label:hover {
-    background:lime;
+/* on hover style for navigation buttons under viewer */
+.slide-viewer > .nav-buttons > label:hover {
+    background:var(--nav-buttons-color-hover)
 }
