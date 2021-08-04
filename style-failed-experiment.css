@@ -62,7 +62,7 @@
    the area under arrows where parts of off-screen slide are visible.
 */
 
-.slide-viewer > label {
+.slide-viewer > input+label, .slide-viewer > input+label+label {
     display:flex;
     justify-content: center;
     align-items: center;
@@ -82,63 +82,29 @@
     color:var(--nav-arrow-color-hover);
 }
 
-.slide-viewer > label:nth-of-type(2n+1) {
+.slide-viewer > input+label {
     left:0;
 }
 
-.slide-viewer > label:nth-of-type(2n) {
+.slide-viewer > input+label+label {
     right:0;
 }
 
 /* this makes navigation arrrows related to selected panel go over others and become active ones */
 
-.slide-viewer > input[type="radio"]:nth-of-type(1):checked ~ label:nth-of-type(1),
-.slide-viewer > input[type="radio"]:nth-of-type(1):checked ~ label:nth-of-type(2)
-{
+.slide-viewer > input[type="radio"]:checked + label,
+.slide-viewer > input[type="radio"]:checked + label+label {
     z-index:3;
 }
 
-.slide-viewer > input[type="radio"]:nth-of-type(2):checked ~ label:nth-of-type(3),
-.slide-viewer > input[type="radio"]:nth-of-type(2):checked ~ label:nth-of-type(4)
-{
-    z-index:3;
-}
+/* this one line does the core sliding feature */
 
-.slide-viewer > input[type="radio"]:nth-of-type(3):checked ~ label:nth-of-type(5),
-.slide-viewer > input[type="radio"]:nth-of-type(3):checked ~ label:nth-of-type(6)
-{
-    z-index:3;
-}
-
-.slide-viewer > input[type="radio"]:nth-of-type(4):checked ~ label:nth-of-type(7),
-.slide-viewer > input[type="radio"]:nth-of-type(4):checked ~ label:nth-of-type(8)
-{
-    z-index:3;
-}
-/* slide divs core sliding feature */
-
-.slide-viewer > input[type="radio"]:nth-of-type(1):checked ~ div {
-    margin:0;
-}
-
-.slide-viewer > input[type="radio"]:nth-of-type(2):checked ~ div:nth-of-type(n+2):nth-last-of-type(n+2) {
-    margin:0;
-}
-
-.slide-viewer > input[type="radio"]:nth-of-type(3):checked ~ div:nth-of-type(n+3):nth-last-of-type(n+2) {
-    margin:0;
-}
-
-.slide-viewer > input[type="radio"]:nth-of-type(4):checked ~ div:nth-of-type(n+4):nth-last-of-type(n+2) {
-    margin:0;
-}
-
-.slide-viewer > input[type="radio"]:nth-of-type(5):checked ~ div:nth-of-type(n+5):nth-last-of-type(n+2) {
-    margin:0;
+.slide-viewer > input[type="radio"]:checked ~ div {
+    margin-left:0;
 }
 
 /* this highlights the navigation button under viewer that is corresponding to currently viewed slide */
-/* .slide-viewer > input[type='radio']:nth-of-type(1):checked ~ .nav-buttons > label:nth-of-type(1) > div,
+.slide-viewer > input[type='radio']:nth-of-type(1):checked ~ .nav-buttons > label:nth-of-type(1) > div,
 
 .slide-viewer input[type='radio']:nth-of-type(2):checked ~ .nav-buttons > label:nth-of-type(2) > div,
 
@@ -148,10 +114,10 @@
 
 .slide-viewer input[type='radio']:nth-of-type(5):checked ~ .nav-buttons > label:nth-of-type(5) > div {
     background: Var(--nav-buttons-color-current);
-}  */
+} 
 
 
-.slide-viewer > div:last-child {
+.slide-viewer > .nav-buttons {
     display: block;
 }
 
@@ -174,11 +140,9 @@
 }
 
 /* on hover style for navigation buttons under viewer */
-.slide-viewer > div:last-of-type > label:hover {
+.slide-viewer > .nav-buttons > label:hover > div {
     background:var(--nav-buttons-color-hover)
 }
-
-/* autoplay animations */
 
 @keyframes slide1{
     0% {
@@ -294,35 +258,31 @@
     99% {background: var(--nav-buttons-color-current);}
 }
 
-/* applying animations to slider divs, navigation buttons and arrows (arrows not yet done) */
-
-.slide-viewer>div:nth-of-type(1), .nav-buttons> label:first-of-type>div {
-    animation: slide1 10s linear infinite;
+.slide-viewer>input:nth-of-type(1)+label+label+div, .nav-buttons> label:first-of-type>div {
+    animation: slide1 10s;
 }
 
-.slide-viewer>div:nth-of-type(2), .nav-buttons> label:nth-of-type(2)>div {
-    animation: slide2 10s linear infinite;
+.slide-viewer>input:nth-of-type(2)+label+label+div, .nav-buttons> label:nth-of-type(2)>div {
+    animation: slide2 10s;
 }
 
-.slide-viewer>div:nth-of-type(3), .nav-buttons> label:nth-of-type(3)>div {
-    animation: slide3 10s linear infinite;
+.slide-viewer>input:nth-of-type(3)+label+label+div, .nav-buttons> label:nth-of-type(3)>div {
+    animation: slide3 10s;
 }
 
-.slide-viewer>div:nth-of-type(4), .nav-buttons> label:nth-of-type(4)>div {
-    animation: slide4 10s linear infinite;
+.slide-viewer>input:nth-of-type(4)+label+label+div, .nav-buttons> label:nth-of-type(4)>div {
+    animation: slide4 10s;
 }
 
-.slide-viewer>div:nth-of-type(5), .nav-buttons> label:nth-of-type(5)>div {
-    animation: slide5 10s linear infinite;
+.slide-viewer>input:nth-of-type(5)+label+label+div, .nav-buttons> label:nth-of-type(5)>div {
+    animation: slide5 10s;
 }
 
 /* Pausing auto animations when hovering hover the image slider */
-
+/* 
 .slide-viewer:hover #slide1 ~ div, .slide-viewer:hover #slide1 ~ .nav-buttons > label > div  {
     animation-play-state: paused;
-}
-
-/* resets of anination cycle when user navigates manually */
+} */
 
 .slide-viewer:active #slide1 ~ div, .slide-viewer:active #slide1 ~ .nav-buttons > label > div  {
     animation:none;
@@ -350,6 +310,7 @@
 #slide4:checked ~ div:not([class='nav-buttons'])
 {
     animation-delay:-6s;
+    background:red;
 }
 
 .slide-viewer input[type='radio']:nth-of-type(5):checked ~ .nav-buttons > label > div ,
@@ -357,12 +318,3 @@
 {
     animation-delay:-8s;
 }
-
-/* TO DO */
-/* 
-Looking good! Animations are working with manual controls. There are few glitches still though:nth-of-type(
-    1. arrows. Yup, that's it.
-
-
-)
-*/
