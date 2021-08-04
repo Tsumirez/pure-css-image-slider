@@ -78,7 +78,7 @@
     background:white;    
 }
 
-.slide-viewer > input+label:hover, .slide-viewer > input+label+label:hover {
+.slide-viewer > label:hover {
     color:var(--nav-arrow-color-hover);
 }
 
@@ -161,6 +161,7 @@
     width:1rem;
     height: 1rem;
     border-radius: 50%;
+    overflow: hidden;
     border:var(--default-border);
     position: absolute;
 }
@@ -174,7 +175,11 @@
 }
 
 /* on hover style for navigation buttons under viewer */
-.slide-viewer > div:last-of-type > label:hover {
+.slide-viewer > div:last-of-type > label:hover > div::before {
+    height:100%;
+    width:100%;
+    display: block;
+    content: '';
     background:var(--nav-buttons-color-hover)
 }
 
