@@ -6,50 +6,175 @@ body {
   --base-delay: 0s;
   --slide-width: 30rem;
   --slide-height: 15rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  --slide-count: 5;
 }
 
-.tsumirez-slider {
+/* image-slider container */
+.tsumirez-slider > span {
   border: 1px solid black;
   width: var(--slide-width);
   display: flex;
   overflow: hidden;
+  margin: 5em auto 0;
 }
 
-.tsumirez-slider > div {
+/* individual slide styles */
+
+.tsumirez-slider > span > div {
   flex: 0 0 var(--slide-width);
   height: var(--slide-height);
   background-color: red;
-  animation: example 10s linear infinite;
   text-align: center;
   order: 1;
   border-right: 1px solid black;
+  animation: auto-slide calc(var(--slide-count) * 2s) linear infinite;
 }
 
-.tsumirez-slider > div:nth-of-type(2) {
-  animation-delay: 2s;
+/* assinging animation delays to each slide */
+
+.tsumirez-slider > span > div:nth-of-type(1) {
+  animation-delay: calc(var(--base-delay) + 0s);
 }
 
-.tsumirez-slider > div:nth-of-type(3) {
-  animation-delay: 4s;
+.tsumirez-slider > span > div:nth-of-type(2) {
+  animation-delay: calc(var(--base-delay) + 2s);
 }
 
-.tsumirez-slider > div:nth-of-type(4) {
-  animation-delay: 6s;
+.tsumirez-slider > span > div:nth-of-type(3) {
+  animation-delay: calc(var(--base-delay) + 4s);
 }
 
-.tsumirez-slider > div:nth-of-type(5) {
-  animation-delay: 8s;
+.tsumirez-slider > span > div:nth-of-type(4) {
+  animation-delay: calc(var(--base-delay) + 6s);
 }
 
-.tsumirez-slider:hover > div {
-  animation-delay: -2s;
+.tsumirez-slider > span > div:nth-of-type(5) {
+  animation-delay: calc(var(--base-delay) + 8s);
 }
 
-@keyframes example {
+/* pausing automatic scroll on mouse over */
+
+.tsumirez-slider:hover > span > div {
+  animation-play-state: paused;
+}
+
+/* navigation buttons styles */
+
+.tsumirez-slider > div {
+  display: flex;
+  justify-content: center;
+  margin: 1em auto;
+  width: var(--slide-width);
+  text-align: center;
+}
+
+.tsumirez-slider > div > label {
+    position: relative;
+    width: 1.5rem;
+    height:1.5rem;
+    margin: 0 0.75rem;
+    border-radius:50%;
+    background: darkred;
+    border:1px solid black;
+}
+
+.tsumirez-slider > div > label:first-of-type {
+    background:deeppink;
+}
+
+/* radio input based navigation functionality */
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked ~ span > div {
+  animation-name: auto-slide;
+}
+
+input[type="radio"]:active ~ span > div {
+  animation-name: auto-slide-copy;
+}
+
+#slide1:checked ~  span > div,
+#slide1:active ~  span > div {
+  --base-delay: 0s;
+}
+
+#slide2:checked ~  span > div,
+#slide2:active ~  span > div {
+  --base-delay: -2s;
+}
+
+#slide3:checked ~  span > div,
+#slide3:active ~  span > div {
+  --base-delay: -4s;
+}
+
+#slide4:checked ~  span > div,
+#slide4:active ~  span > div {
+  --base-delay: -6s;
+}
+
+#slide5:checked ~  span > div,
+#slide5:active ~  span > div {
+  --base-delay: -8s;
+}
+
+/* animation for automatic slide scrolling */
+
+@keyframes auto-slide {
+  0% {
+    margin-left: 0;
+    order: 1;
+  }
+
+  19% {
+    margin-left: 0;
+  }
+
+  19.9% {
+    margin-left: calc(var(--slide-width) * -1);
+    order: 1;
+  }
+
+  20% {
+    margin-left: 0;
+    order: 5;
+  }
+
+  39.9% {
+    order: 5;
+  }
+
+  40% {
+    order: 4;
+  }
+
+  59.9% {
+    order: 4;
+  }
+
+  60% {
+    order: 3;
+  }
+
+  79.9% {
+    order: 3;
+  }
+
+  80% {
+    order: 2;
+  }
+
+  100% {
+    order: 2;
+  }
+}
+
+/* copy animation for purposes of resetting animation when user interacts with component */
+
+@keyframes auto-slide-copy {
   0% {
     margin-left: 0;
     order: 1;
