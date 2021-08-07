@@ -1,56 +1,99 @@
 * {
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    text-align: center;
+  --base-delay: 0s;
+  --slide-width: 30rem;
+  --slide-height: 15rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-div#slide {
-    width:300px;
-    overflow: hidden;
-    margin:5rem auto 1rem;
-    white-space: nowrap;
-    font-size:0;
+.tsumirez-slider {
+  border: 1px solid black;
+  width: var(--slide-width);
+  display: flex;
+  overflow: hidden;
 }
 
-#slide div {
-    border:1px solid black;
-    height:200px;
-    width: 300px;
-    background:green;
-    display:inline-block;
-    line-height:200px;
-    font-size:1rem;
-    margin-left:-100%;
-    transition: margin-left 1s;
+.tsumirez-slider > div {
+  flex: 0 0 var(--slide-width);
+  height: var(--slide-height);
+  background-color: red;
+  animation: example 10s linear infinite;
+  text-align: center;
+  order: 1;
+  border-right: 1px solid black;
 }
 
-input[type="radio"] {
-    font-size:0;
-    height:0;
-    width:0;
-    display:none;
+.tsumirez-slider > div:nth-of-type(2) {
+  animation-delay: 2s;
 }
 
-#slide input[type="radio"]:checked ~ div {
-    margin-left:0;
+.tsumirez-slider > div:nth-of-type(3) {
+  animation-delay: 4s;
 }
 
-.nav-buttons {
-    display: inline-block;
+.tsumirez-slider > div:nth-of-type(4) {
+  animation-delay: 6s;
 }
 
-.nav-buttons label {
-    display:inline-block;
-    background: green;
-    width:1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border:1px solid black;
+.tsumirez-slider > div:nth-of-type(5) {
+  animation-delay: 8s;
 }
 
-.nav-buttons label:hover {
-    background:lime;
+.tsumirez-slider:hover > div {
+  animation-delay: -2s;
+}
+
+@keyframes example {
+  0% {
+    margin-left: 0;
+    order: 1;
+  }
+
+  19% {
+    margin-left: 0;
+  }
+
+  19.9% {
+    margin-left: calc(var(--slide-width) * -1);
+    order: 1;
+  }
+
+  20% {
+    margin-left: 0;
+    order: 5;
+  }
+
+  39.9% {
+    order: 5;
+  }
+
+  40% {
+    order: 4;
+  }
+
+  59.9% {
+    order: 4;
+  }
+
+  60% {
+    order: 3;
+  }
+
+  79.9% {
+    order: 3;
+  }
+
+  80% {
+    order: 2;
+  }
+
+  100% {
+    order: 2;
+  }
+}
