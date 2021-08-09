@@ -16,7 +16,7 @@ body {
 }
 
 /* image-slider container */
-.tsumirez-slider > span {
+.tsumirez-slider > article >  span {
   border: 1px solid black;
   width: var(--slide-width);
   display: flex;
@@ -26,7 +26,7 @@ body {
 
 /* individual slide styles */
 
-.tsumirez-slider > span > div {
+.tsumirez-slider > article >  span > div {
   flex: 0 0 var(--slide-width);
   height: var(--slide-height);
   background-color: red;
@@ -38,36 +38,34 @@ body {
 
 /* assinging animation delays to each slide */
 
-.tsumirez-slider > span > div:nth-of-type(1) {
+.tsumirez-slider article > span > div:nth-of-type(1) {
   animation-delay: calc(var(--base-delay) + 0s);
 }
 
-.tsumirez-slider > span > div:nth-of-type(2) {
+.tsumirez-slider article > span > div:nth-of-type(2) {
   animation-delay: calc(var(--base-delay) + 2s);
 }
 
-.tsumirez-slider > span > div:nth-of-type(3) {
+.tsumirez-slider article > span > div:nth-of-type(3) {
   animation-delay: calc(var(--base-delay) + 4s);
 }
 
-.tsumirez-slider > span > div:nth-of-type(4) {
+.tsumirez-slider article > span > div:nth-of-type(4) {
   animation-delay: calc(var(--base-delay) + 6s);
 }
 
-.tsumirez-slider > span > div:nth-of-type(5) {
+.tsumirez-slider article > span > div:nth-of-type(5) {
   animation-delay: calc(var(--base-delay) + 8s);
 }
 
 /* pausing automatic scroll on mouse over */
 
-.tsumirez-slider:hover > span > div,
-.tsumirez-slider:hover > div::after {
+.tsumirez-slider:hover > article > span > div,
+.tsumirez-slider:hover > article > div::after {
   animation-play-state: paused;
 }
 
-/* navigation buttons styles */
-
-.tsumirez-slider > div {
+.tsumirez-slider > article >  div {
   display: inline-flex;
   margin: 1em auto;
   width: calc(var(--slide-count * 2rem));
@@ -75,7 +73,7 @@ body {
   overflow: hidden;
 }
 
-.tsumirez-slider > div::before {
+.tsumirez-slider > article >  div::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -84,7 +82,7 @@ body {
   z-index:1;
 }
 
-.tsumirez-slider > div > label {
+.tsumirez-slider > article > div > label {
     position: relative;
     width: 2rem;
     height:1.5rem;
@@ -92,7 +90,7 @@ body {
     z-index:3;
 }
 
-.tsumirez-slider > div > label::before {
+.tsumirez-slider > article > div > label::before {
   content: '';
   width:1.5rem;
   height:1.5rem;
@@ -103,11 +101,11 @@ body {
   box-shadow: 0 0 0 1.5rem #fff, inset 0 0 0 1px #000;
 }
 
-.tsumirez-slider > div > label:hover::before {
+.tsumirez-slider > article > div > label:hover::before {
   background-color:rgba(255,255,255,0.6);
 }
 
-.tsumirez-slider > div::after {
+.tsumirez-slider > article > div::after {
   content: '';
   position: relative;
   background:deeppink;
@@ -124,55 +122,45 @@ input[type="radio"] {
 }
 
 /* reset animations when pressing a control */
-input[type="radio"]:checked ~ span > div {
+input[type="radio"]:checked ~ article > span > div {
   animation-name: auto-slide;
 }
 
-input[type="radio"]:active ~ span > div {
+input[type="radio"]:active ~ article > span > div {
   animation-name: auto-slide-copy;
 }
 
-input[type="radio"]:checked ~ div::after {
+input[type="radio"]:checked ~ article > div::after {
   animation-name: nav-buttons;
 }
 
-input[type="radio"]:active ~ div::after {
+input[type="radio"]:active ~ article > div::after {
   animation-name: nav-buttons-copy;
 }
 
 /* :active styles need priority over checked ones to avoid conflicts. That's why they get more precise selector */
-input[type="radio"]:nth-of-type(1):checked ~  span > div,
-input[type="radio"][name="slide"]:nth-of-type(1):active ~  span > div,
-input[type="radio"]:nth-of-type(1):checked ~ div,
-input[type="radio"][name="slide"]:nth-of-type(1):active ~ div::after {
+input[type="radio"]:nth-of-type(1):checked ~  article,
+input[type="radio"][name="slide"]:nth-of-type(1):active ~  article {
   --base-delay: 0s;
 }
 
-input[type="radio"]:nth-of-type(2):checked ~  span > div,
-input[type="radio"][name="slide"]:nth-of-type(2):active ~  span > div,
-input[type="radio"]:nth-of-type(2):checked ~ div,
-input[type="radio"][name="slide"]:nth-of-type(2):active ~ div::after {
+input[type="radio"]:nth-of-type(2):checked ~ article,
+input[type="radio"][name="slide"]:nth-of-type(2):active ~  article {
   --base-delay: -2s;
 }
 
-input[type="radio"]:nth-of-type(3):checked ~  span > div,
-input[type="radio"][name="slide"]:nth-of-type(3):active ~  span > div,
-input[type="radio"]:nth-of-type(3):checked ~ div::after,
-input[type="radio"][name="slide"]:nth-of-type(3):active ~ div::after {
+input[type="radio"]:nth-of-type(3):checked ~ article,
+input[type="radio"][name="slide"]:nth-of-type(3):active ~ article {
   --base-delay: -4s;
 }
 
-input[type="radio"]:nth-of-type(4):checked ~  span > div,
-input[type="radio"][name="slide"]:nth-of-type(4):active ~  span > div,
-input[type="radio"]:nth-of-type(4):checked ~ div::after,
-input[type="radio"][name="slide"]:nth-of-type(4):active ~ div::after {
+input[type="radio"]:nth-of-type(4):checked ~ article,
+input[type="radio"][name="slide"]:nth-of-type(4):active ~ article {
   --base-delay: -6s;
 }
 
-input[type="radio"]:nth-of-type(5):checked ~  span > div,
-input[type="radio"][name="slide"]:nth-of-type(5):active ~  span > div,
-input[type="radio"]:nth-of-type(5):checked ~ div::after,
-input[type="radio"][name="slide"]:nth-of-type(5):active ~ div::after {
+input[type="radio"]:nth-of-type(5):checked ~ article,
+input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
   --base-delay: -8s;
 }
 
