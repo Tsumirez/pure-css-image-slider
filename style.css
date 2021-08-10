@@ -27,7 +27,7 @@ body {
   border: 1px solid black;
   width: var(--slide-width);
   display: flex;
-  overflow: hidden;
+  overflow:hidden;
   margin: 5em auto 0;
 }
 
@@ -40,7 +40,7 @@ body {
   text-align: center;
   order: 1;
   border-right: 1px solid black;
-  animation: auto-slide calc(var(--slide-count) * 2s) steps(5) infinite,
+  animation: auto-slide calc(var(--slide-count) * 2s) steps(5, jump-start) infinite,
   sliding calc(var(--slide-count) * 2s) linear infinite;
 }
 
@@ -242,7 +242,6 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
 @keyframes sliding {
   0%{margin-left:0;}
   19%{margin-left:0;}
-  19.9%{margin-left:-100%;}
   20% {margin-left: -100%}
   20.1% {margin-left: 0;}
 }
@@ -250,7 +249,6 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
 @keyframes sliding-copy {
   0%{margin-left:0;}
   19%{margin-left:0;}
-  19.9%{margin-left:-100%;}
   20% {margin-left: -100%}
   20.1% {margin-left: 0;}
 }
