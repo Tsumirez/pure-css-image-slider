@@ -40,29 +40,30 @@ body {
   text-align: center;
   order: 1;
   border-right: 1px solid black;
-  animation: auto-slide calc(var(--slide-count) * 2s) steps(5) infinite;
+  animation: auto-slide calc(var(--slide-count) * 2s) steps(5) infinite,
+  sliding calc(var(--slide-count) * 2s) linear infinite;
 }
 
 /* assinging animation delays to each slide */
 
 .tsumirez-slider article > span > div:nth-of-type(1) {
-  animation-delay: calc(var(--base-delay) - 8s);
+  animation-delay: calc(var(--base-delay) - 8s), 0s;
 }
 
 .tsumirez-slider article > span > div:nth-of-type(2) {
-  animation-delay: calc(var(--base-delay) - 6s);
+  animation-delay: calc(var(--base-delay) - 6s), 2s;
 }
 
 .tsumirez-slider article > span > div:nth-of-type(3) {
-  animation-delay: calc(var(--base-delay) - 4s);
+  animation-delay: calc(var(--base-delay) - 4s), 4s;
 }
 
 .tsumirez-slider article > span > div:nth-of-type(4) {
-  animation-delay: calc(var(--base-delay) - 2s);
+  animation-delay: calc(var(--base-delay) - 2s), 6s;
 }
 
 .tsumirez-slider article > span > div:nth-of-type(5) {
-  animation-delay: calc(var(--base-delay) - 0s);
+  animation-delay: calc(var(--base-delay) - 0s), 8s;
 }
 
 /* pausing automatic scroll on mouse over */
@@ -93,7 +94,7 @@ body {
 
 /* preventing default animation reset when using arrrow labels */
 #slider  > label:active ~ article > span > div {
-  animation-name: auto-slide;
+  animation-name: auto-slide, sliding;
 }
 
 #slider > label:active ~ article > div::after {
@@ -174,11 +175,11 @@ input[type="radio"] {
 
 /* reset animations when pressing a control */
 input[type="radio"]:checked ~ article > span > div {
-  animation-name: auto-slide;
+  animation-name: auto-slide, sliding;
 }
 
 input[type="radio"]:active ~ article > span > div {
-  animation-name: auto-slide-copy;
+  animation-name: auto-slide-copy, sliding-copy;
 }
 
 input[type="radio"]:checked ~ article > div::after {
@@ -231,12 +232,27 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
   0% {order:5}
   100% {order:1}
 }
-
 /* copy animation for purposes of resetting animation when user interacts with component */
 
 @keyframes auto-slide-copy {
   0% {order:5}
   100% {order:1}
+}
+
+@keyframes sliding {
+  0%{margin-left:0;}
+  19%{margin-left:0;}
+  19.9%{margin-left:-100%;}
+  20% {margin-left: -100%}
+  20.1% {margin-left: 0;}
+}
+
+@keyframes sliding-copy {
+  0%{margin-left:0;}
+  19%{margin-left:0;}
+  19.9%{margin-left:-100%;}
+  20% {margin-left: -100%}
+  20.1% {margin-left: 0;}
 }
 
 .tsumirez-slider > article > span > div > img {
