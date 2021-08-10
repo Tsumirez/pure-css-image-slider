@@ -201,7 +201,7 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
   --base-delay: -8s;
 }
 
-/* animation for automatic slide scrolling */
+/* animation definitions + copies for resetting them */
 
 @keyframes nav-buttons {
   0% {margin-left: -100%}
@@ -217,7 +217,6 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
   0% {order:5}
   100% {order:1}
 }
-/* copy animation for purposes of resetting animation when user interacts with component */
 
 @keyframes auto-slide-copy {
   0% {order:5}
@@ -225,14 +224,12 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
 }
 
 @keyframes sliding {
-  0%{margin-left:0;}
   19%{margin-left:0;}
   20% {margin-left: -100%}
   20.1% {margin-left: 0;}
 }
 
 @keyframes sliding-copy {
-  0%{margin-left:0;}
   19%{margin-left:0;}
   20% {margin-left: -100%}
   20.1% {margin-left: 0;}
@@ -247,6 +244,7 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
 .tsumirez-slider > article > span > div > img {
    width:var(--slide-width);
 }
+
 /* TO DO 
 
 1. refactor arrow styles (no more new css rules  for each new input) v
