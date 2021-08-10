@@ -246,9 +246,6 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
 }
 
 /* TO DO 
-
-1. refactor arrow styles (no more new css rules  for each new input) v
-2 refactor animations (break up big  slide animation into two simple ones - order one and margin one) v
 3. add pause/play functionality and visuals
 4. push further automatization & reliance on variables
 5. pimp the style!
