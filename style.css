@@ -14,6 +14,7 @@ body {
   width:var(--slide-width);
   text-align:center;
   margin:5rem auto;
+  position: relative;
 }
 
 .tsumirez-slider > article {
@@ -72,86 +73,45 @@ body {
 }
 
 /* ARROW NAVIGATION */
-.tsumirez-slider > article > label{
+.tsumirez-slider > label{
   top: 1px;
   width: 2.5rem;
   height: var(--slide-height);
   position: absolute;
   color:rgba(255,255,255,0.8);
   font: 4rem Playball,serif;
- transform-origin: center;
+  transform-origin: center;
   display:none;
   cursor: pointer;
   line-height: var(--slide-height);
+  z-index: 1;
 }
 
-.tsumirez-slider >article >label:hover {
+.tsumirez-slider > label:hover {
   color:rgba(100,255,100,0.8);
 }
 
 /* preventing default animation reset when using arrrow labels */
-.tsumirez-slider > article#tsumirez-slider-controls > label:active ~ span > div {
+#slider  > label:active ~ article > span > div {
   animation-name: auto-slide;
 }
 
-.tsumirez-slider > article#tsumirez-slider-controls > label:active ~ div::after {
+#slider > label:active ~ article > div::after {
   animation-name: nav-buttons;
 }
 
 /* revealing and styling arrow labels based on their position (left or right of slide)*/
-.tsumirez-slider > input[type="radio"]:nth-of-type(1):checked ~ article > label:nth-of-type(2) {
-  display:block;
-  right:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(1):checked ~ article > label:nth-of-type(5) {
+.tsumirez-slider > input[type="radio"]:checked + label {
   display:block;
   transform: rotate(0.5turn);
   left:1px;
 }
 
-.tsumirez-slider > input[type="radio"]:nth-of-type(2):checked ~ article > label:nth-of-type(3) {
+.tsumirez-slider > input[type="radio"]:checked + label + input + label + input + label,
+.tsumirez-slider > input[type="radio"]:checked + label + input + label + label,
+.tsumirez-slider > input[type="radio"]:checked + label + label + label {
   display:block;
   right:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(2):checked ~ article > label:nth-of-type(1) {
-  display:block;
-  transform: rotate(0.5turn);
-  left:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(3):checked ~ article > label:nth-of-type(4) {
-  display:block;
-  right:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(3):checked ~ article > label:nth-of-type(2) {
-  display:block;
-  transform: rotate(0.5turn);
-  left:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(4):checked ~ article > label:nth-of-type(5) {
-  display:block;
-  right:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(4):checked ~ article > label:nth-of-type(3) {
-  display:block;
-  transform: rotate(0.5turn);
-  left:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(5):checked ~ article > label:nth-of-type(1) {
-  display:block;
-  right:1px;
-}
-
-.tsumirez-slider > input[type="radio"]:nth-of-type(5):checked ~ article > label:nth-of-type(4) {
-  display:block;
-  transform: rotate(0.5turn);
-  left:1px;
 }
 
 /* bottom navigation controls styles */
@@ -370,3 +330,12 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
 .tsumirez-slider > article > span > div > img {
    width:var(--slide-width)
 }
+/* TO DO 
+
+1. refactor arrow styles (no more new css rules  for each new input) v
+2 refactor animations (break up big  slide animation into two simple ones - order one and margin one)
+3. add pause/play functionality and visuals
+4. push further automatization & reliance on variables
+5. pimp the style!
+
+*/

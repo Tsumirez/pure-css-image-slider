@@ -6,25 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="tsumirez-slider">
-        <input type="radio" id="slide1" name="slide" value="1" checked>
-        <input type="radio" id="slide2" name="slide" value="2">
-        <input type="radio" id="slide3" name="slide" value="3">
-        <input type="radio" id="slide4" name="slide" value="4">
-        <input type="radio" id="slide5" name="slide" value="5">
+    <div class="tsumirez-slider" id="slider">
+        <!-- inputs for preserving animation settings and labels for arrow navigation -->
+        <input type="radio" id="slide1" name="slide" checked>
+        <label for="slide5">&gt;</label>
+        <input type="radio" id="slide2" name="slide">
+        <label for="slide1">&gt;</label>
+        <input type="radio" id="slide3" name="slide">
+        <label for="slide2">&gt;</label>
+        <input type="radio" id="slide4" name="slide">
+        <label for="slide3">&gt;</label>
+        <input type="radio" id="slide5" name="slide">
+        <label for="slide4">&gt;</label>
 
-        <article id="tsumirez-slider-controls">
-            <label for="slide1">&gt;</label>
-            <label for="slide2">&gt;</label>
-            <label for="slide3">&gt;</label>
-            <label for="slide4">&gt;</label>
-            <label for="slide5">&gt;</label>
+        <!-- arrow navigation ending section. Add new labels and inputs for new slides in the block above. -->
 
+        <label for="slide5">&gt;</label>
+        <label for="slide1">&gt;</label>
+
+        <article>
             <span>
                 <div><img src="krytan1.jpg" alt="Krytan Butcher"></div>
                 <div><img src="krytan2.jpg" alt="Krytan Butcher"></div>
