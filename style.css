@@ -40,29 +40,29 @@ body {
   text-align: center;
   order: 1;
   border-right: 1px solid black;
-  animation: auto-slide calc(var(--slide-count) * 2s) linear var(--base-delay) infinite;
+  animation: auto-slide calc(var(--slide-count) * 2s) steps(5) infinite;
 }
 
 /* assinging animation delays to each slide */
 
 .tsumirez-slider article > span > div:nth-of-type(1) {
-  animation-delay: calc(var(--base-delay) + 0s);
+  animation-delay: calc(var(--base-delay) - 8s);
 }
 
 .tsumirez-slider article > span > div:nth-of-type(2) {
-  animation-delay: calc(var(--base-delay) + 2s);
+  animation-delay: calc(var(--base-delay) - 6s);
 }
 
 .tsumirez-slider article > span > div:nth-of-type(3) {
-  animation-delay: calc(var(--base-delay) + 4s);
+  animation-delay: calc(var(--base-delay) - 4s);
 }
 
 .tsumirez-slider article > span > div:nth-of-type(4) {
-  animation-delay: calc(var(--base-delay) + 6s);
+  animation-delay: calc(var(--base-delay) - 2s);
 }
 
 .tsumirez-slider article > span > div:nth-of-type(5) {
-  animation-delay: calc(var(--base-delay) + 8s);
+  animation-delay: calc(var(--base-delay) - 0s);
 }
 
 /* pausing automatic scroll on mouse over */
@@ -228,103 +228,15 @@ input[type="radio"][name="slide"]:nth-of-type(5):active ~ article {
 }
 
 @keyframes auto-slide {
-  0% {
-    margin-left: 0;
-    order: 1;
-  }
-
-  19% {
-    margin-left: 0;
-  }
-
-  19.9% {
-    margin-left: calc(var(--slide-width) * -1);
-    order: 1;
-  }
-
-  20% {
-    margin-left: 0;
-    order: 5;
-  }
-
-  39.9% {
-    order: 5;
-  }
-
-  40% {
-    order: 4;
-  }
-
-  59.9% {
-    order: 4;
-  }
-
-  60% {
-    order: 3;
-  }
-
-  79.9% {
-    order: 3;
-  }
-
-  80% {
-    order: 2;
-  }
-
-  100% {
-    order: 2;
-  }
+  0% {order:5}
+  100% {order:1}
 }
 
 /* copy animation for purposes of resetting animation when user interacts with component */
 
 @keyframes auto-slide-copy {
-  0% {
-    margin-left: 0;
-    order: 1;
-  }
-
-  19% {
-    margin-left: 0;
-  }
-
-  19.9% {
-    margin-left: calc(var(--slide-width) * -1);
-    order: 1;
-  }
-
-  20% {
-    margin-left: 0;
-    order: 5;
-  }
-
-  39.9% {
-    order: 5;
-  }
-
-  40% {
-    order: 4;
-  }
-
-  59.9% {
-    order: 4;
-  }
-
-  60% {
-    order: 3;
-  }
-
-  79.9% {
-    order: 3;
-  }
-
-  80% {
-    order: 2;
-  }
-
-  100% {
-    order: 2;
-  }
+  0% {order:5}
+  100% {order:1}
 }
 
 .tsumirez-slider > article > span > div > img {
